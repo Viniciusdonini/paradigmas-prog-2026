@@ -2,8 +2,8 @@
 FROM php:8.3-cli
 
 # Dependências do sistema e extensões do PHP usadas pelo Laravel
-RUN apt-get update && apt-get install -y unzip libzip-dev \
-    && docker-php-ext-install pdo_mysql zip
+RUN apt-get update && apt-get install -y unzip libzip-dev libonig-dev libsqlite3-dev \
+    && docker-php-ext-install mbstring pdo_mysql pdo_sqlite zip
 
 # Copia o Composer de outra imagem oficial
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
